@@ -1,0 +1,50 @@
+html {
+    box-sizing: border-box;
+}
+  
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+#app {
+    padding: 2em;
+    background: rgb(76, 121, 76);
+    width: 20em;
+    height: auto;
+    box-shadow: 0 0.125em 0.500em 0 #000000;;
+    border-radius: .2em;
+}
+
+h3 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+form {
+    line-height: 1em;
+    padding-bottom: 1em;
+    
+}
+
+label {
+    font-size: 1.3em;
+}
+
+input {
+    margin-top: 1em;
+    background: rgb(243, 235, 235);
+    font-size: 1em;
+}
+
+input:hover,
+input:focus {
+    background: #fff;
+}
+
+button {
+    box-shadow: 0 0.125em 0.500em 0 #000000;;
+}
