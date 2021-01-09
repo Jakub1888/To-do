@@ -5,9 +5,11 @@ Vue.createApp({
         return {
             title: 'Your To-Do List',
             newTodo: '',
-            todos: []
+            todos: [],
+            
         };
     },
+    
     methods: {
         addTodo() {
             this.todos.push({
@@ -24,6 +26,14 @@ Vue.createApp({
             this.todos.forEach(todo => {
                 todo.done = true;
             });
+        },
+        clear() {
+            this.newTodo= '';
         }
+        
+        
+          
+        
+        
     },
 }).mount("#app");

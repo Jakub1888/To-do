@@ -11,8 +11,8 @@
             <h3>{{ title }}</h3>
 
             <form @submit.prevent="addTodo">
-                <label for="newTodo">I have to do:</label>
-                <input v-model="newTodo" type="text" name="newTodo" id="newTodo" required>
+                <label for="newTodo">Things I need to do:</label>
+                <input v-on:keyup.esc="clear" v-model="newTodo" type="text" name="newTodo" id="newTodo" required>
                 
                 <button type="submit" name="button">Add</button>
             </form>
@@ -24,6 +24,10 @@
                     <button @click="removeTodo(todo)" type="button" name="button">x</button>
                 </li>
             </ul>
+
+            <div class="preview">
+                <small>{{ newTodo }}</small>
+            </div>
             
             <button @click="allDone" type="button" name="button">All Completed</button>
         </main>
