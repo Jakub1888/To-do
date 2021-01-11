@@ -3,36 +3,32 @@
     <head>
         <meta charset="utf-8">
         <title>To-do list</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
 
         <main id="app">
             <h3>{{ title }}</h3>
-
-            <form @submit.prevent="addTodo">
-                <label for="newTodo">Things I need to do:</label>
-                <input v-on:keyup.esc="clear" v-model="newTodo" type="text" name="newTodo" id="newTodo" required>
-                
-                <button type="submit" name="button">Add</button>
-            </form>
             
             <ul>
                 <li v-for="todo in todos">
                     <input type="checkbox" v-model="todo.done">
                     <span :class=" { done: todo.done }">{{ todo.title }}</span>
-                    <button @click="removeTodo(todo)" type="button" name="button">x</button>
+                    <button @click="removeTodo(todo)" type="button">x</button>
                 </li>
+                <div class="preview">
+                    <small>{{ newTodo }}</small>
+                </div>
             </ul>
 
-            <div class="preview">
-                <small>{{ newTodo }}</small>
-            </div>
-            
-            <button @click="allDone" type="button" name="button">All Completed</button>
+             <form class="add-new" @submit.prevent="addTodo">  
+                <input v-on:keyup.esc="clear" v-model="newTodo" type="text" name="newTodo" id="newTodo" placeholder="A thing to do" required>
+            </form>
+
+            <button @click="allDone" type="button" class="button-complete">All Completed</button>
         </main>
 
         <script src="https://unpkg.com/vue@next"></script>
-        <script src="app.js" charset="utf-8"></script>
+        <script src="js/app.js" charset="utf-8"></script>
     </body>
 </html>

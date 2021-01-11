@@ -31,9 +31,6 @@ Vue.createApp({
             this.newTodo= '';
         }
         
-        
-          
-        
-        
     },
 }).mount("#app");
+
