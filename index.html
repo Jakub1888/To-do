@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>To-do list</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
+  <head>
+    <meta charset="utf-8" />
+    <title>To-do list</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main id="app">
+      <!--Tittle-->
+      <h3>{{ title }}</h3>
 
-        <main id="app">
-            <h3>{{ title }}</h3>
-            
-            <ul>
-                <li v-for="todo in todos">
-                    <input type="checkbox" v-model="todo.done">
-                    <span :class=" { done: todo.done }">{{ todo.title }}</span>
-                    <button @click="removeTodo(todo)" type="button">x</button>
-                </li>
-                <div class="preview">
-                    <small>{{ newTodo }}</small>
-                </div>
-            </ul>
+      <!--List Items-->
+      <transition-group name="todo" tag="ul">
+        <li class="todo" v-for="(todo, index) in todos" :key="index">
+          <input type="checkbox" v-model="todo.done" class="checkbox"/>
 
-             <form class="add-new" @submit.prevent="addTodo">  
-                <input v-on:keyup.esc="clear" v-model="newTodo" type="text" name="newTodo" id="newTodo" placeholder="A thing to do" required>
-            </form>
+          <span :class=" { done: todo.done }">{{ todo.title }}</span>
+          <a @click.prevent="remove(todo)">x</a>
+        </li>
+      </transition-group>
 
-            <button @click="allDone" type="button" class="button-complete">All Completed</button>
-        </main>
+      <!--Preview of list item-->
+      <div class="preview">
+        <small>{{ newTodo }}</small>
+      </div>
 
-        <script src="https://unpkg.com/vue@next"></script>
-        <script src="js/app.js" charset="utf-8"></script>
-    </body>
+      <!--Input for the list-->
+      <form class="add-new" @submit.prevent="addTodo">
+        <input
+          v-on:keyup.esc="clear"
+          v-model="newTodo"
+          type="text"
+          name="newTodo"
+          id="newTodo"
+          ref="new"
+          autofocus
+        />
+      </form>
+
+      <!--button marking all list items completed-->
+      <button @click="allDone" type="button" class="button-complete">
+        All Completed
+      </button>
+    </main>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+  </body>
 </html>
