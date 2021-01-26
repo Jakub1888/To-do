@@ -1,7 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Varela&display=swap");
 
 html {
   box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
 *,
@@ -11,32 +16,20 @@ html {
 }
 
 body {
-  background: #b3d6ff;
+  background-image: url("../assets/bg-image.jpg");
+  background-repeat: no-repeat;
+
   margin: 0 auto;
-  font-family: 'Varela', sans-serif;
-}
-
-/* clearfix */
-.group:before,
-.container:before,
-.group:after,
-.container:after {
-  content: " ";
-  display: table;
-}
-
-.group:after,
-.container:after {
-  clear: both;
+  font-family: "Varela", sans-serif;
 }
 
 h3 {
-  font-size: 2em;
+  font-size: 1.8em;
   margin-top: 0;
-  background: #3c6a9e;
+  background: #79ace6;
   text-align: center;
   border-radius: 0.2em;
-  border: 0.001em solid #2c527e;
+  border: 0.2em solid #478bd8;
   box-shadow: 0 0.125em 0.5em 0 #000000;
   width: 10em;
   padding: 0.2em;
@@ -59,7 +52,7 @@ label {
 }
 
 input {
-  background: rgb(243, 235, 235);
+  background: rgb(102, 96, 96);
   font-size: 1em;
 }
 
@@ -105,7 +98,6 @@ ul {
 }
 
 li {
-  color: #274970;
   font-size: 0.7em;
   font-weight: bold;
   width: auto;
@@ -134,18 +126,33 @@ li span {
   font-size: 1.3em;
 }
 
+.todo {
+  width: 70%;
+  height: 4.5em;
+  background-color: #5a98e0b0;
+  backdrop-filter: blur(4px);
+  border-radius: 5px;
+  margin-bottom: 1.3em;
+  padding-top: 0.3em;
+}
+
 a {
-    font-size: 1.6em;
-    color: rgb(2, 116, 106);
+  font-size: 1.6em;
+  color: rgb(196, 62, 10);
+  position: absolute;
+  right: 14px;
 }
 
 a:hover,
 a:focus {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .preview {
-  opacity: 0.5;
+  color: rgb(18, 106, 156);
+  margin-top: 1.3em;
+  opacity: 0.7;
+  font-size: 1.2em;
 }
 
 .add-new {
@@ -156,10 +163,10 @@ a:focus {
 
 .add-new input {
   font-size: 14px;
-  color: #fff;
+  color: rgb(20, 20, 20);
   background: none;
   border: none;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid rgb(6, 65, 42);
   display: block;
   margin: 0 auto;
   text-align: center;
@@ -175,7 +182,9 @@ a:focus {
 }
 
 .add-new input:last-child {
-  font-size: 13px;
+  font-size: 20px;
+  color: #1d505f;
+  text-shadow: 1px 1px 2px rgb(170, 165, 165);
   width: 100%;
 }
 
@@ -191,8 +200,40 @@ a:focus {
   transform: scale(0.75);
 }
 
-.checkbox {
-    cursor: pointer;
+/* Checkbox */
+.visually-hiden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
+.control {
+  display: inline-flex;
+  align-items: center;
+}
 
+.control-indicator {
+  padding: 0;
+  width: 22px;
+  height: 22px;
+  background-color: rgb(243, 236, 236);
+  border-radius: 2px;
+  border: 1px solid rgb(158, 155, 155);
+  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  left: 12px;
+}
+
+.control-input:checked ~ .control-indicator {
+  background-color: rgb(21, 177, 112);
+  background-image: url("../assets/done.svg");
+  background-size: 85%;
+  background-position: center;
+  background-repeat: no-repeat;
+}

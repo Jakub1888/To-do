@@ -2,8 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>To-do list</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    
   </head>
   <body>
     <main id="app">
@@ -13,7 +14,11 @@
       <!--List Items-->
       <transition-group name="todo" tag="ul">
         <li class="todo" v-for="(todo, index) in todos" :key="index">
-          <input type="checkbox" v-model="todo.done" class="checkbox"/>
+
+          <label class="control">
+            <input type="checkbox" v-model="todo.done" class="control-input visually-hiden"/>
+            <span class="control-indicator"></span>
+          </label>
 
           <span :class=" { done: todo.done }">{{ todo.title }}</span>
           <a @click.prevent="remove(todo)">x</a>
@@ -32,16 +37,15 @@
           v-model="newTodo"
           type="text"
           name="newTodo"
-          id="newTodo"
           ref="new"
           autofocus
         />
       </form>
 
-      <!--button marking all list items completed-->
+      <!--button marking all list items completed
       <button @click="allDone" type="button" class="button-complete">
         All Completed
-      </button>
+      </button>-->
     </main>
 
     <script src="https://unpkg.com/vue@next"></script>
