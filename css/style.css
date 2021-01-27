@@ -18,7 +18,6 @@ html {
 body {
   background-image: url("../assets/bg-image.jpg");
   background-repeat: no-repeat;
-
   margin: 0 auto;
   font-family: "Varela", sans-serif;
 }
@@ -65,36 +64,42 @@ input:focus {
   background: #fff;
 }
 
+/*buttons*/
+aside {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 button {
-  box-shadow: 0 0.125em 0.5em 0 #000000;
+  display: inline-block;
+  padding: 0.3em 0.3em;
+  margin-left: 0.2em;
+  text-align: center;
+  width: 13%;
+  transition: all 0.2s;
+  border: 0.1em solid black;
+  border-radius: 0.4em;
+  font-size: .8em;
+  font-family: "Varela", sans-serif;
 }
 
 button:hover,
 button:focus {
   cursor: pointer;
+  color: rgb(255, 255, 255);
+  background: rgb(21, 177, 112);;
 }
 
-.button-add {
-  margin-left: 1em;
-  padding: 0.3em 1em;
-  color: rgb(121, 118, 118);
-  background: rgb(233, 231, 231);
-}
-
-.button-add:hover,
-.button-add:focus {
-  background: rgb(192, 190, 190);
-  color: #fff;
+.button-remove:hover,
+.button-remove:focus {
+  background: #DB4E35;
 }
 
 ul {
   padding: 0;
   list-style: circle;
-}
-
-.button-complete {
-  display: block;
-  margin: 0 auto;
 }
 
 li {
@@ -133,7 +138,7 @@ li span {
   backdrop-filter: blur(4px);
   border-radius: 5px;
   margin-bottom: 1.3em;
-  padding-top: 0.3em;
+  transition: border-color .15s ease-in-out;
 }
 
 a {
@@ -236,4 +241,29 @@ a:focus {
   background-size: 85%;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* List Item Priority */
+.prio {
+  display: inline-block;
+  color: black;
+  font-size: 12px;
+  font-weight: bold;
+  width: 2.35em;
+  background: none;
+  border: none;
+  padding: 3px;
+  position: absolute;
+  right: -40px;
+  top: 15px;
+}
+
+.imp {
+  border: 2px solid rgb(197, 59, 59);
+  background-color: #2479dab0;
+  text-decoration: underline;
+}
+
+.less_imp {
+  border: 1px solid green;
 }

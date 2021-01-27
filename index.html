@@ -4,7 +4,6 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
     <title>To-do list</title>
-    
   </head>
   <body>
     <main id="app">
@@ -13,14 +12,21 @@
 
       <!--List Items-->
       <transition-group name="todo" tag="ul">
-        <li class="todo" v-for="(todo, index) in todos" :key="index">
+        <li class="todo" v-for="(todo, index) in todos" :key="index" :class="{ imp: todo.priority >= 2, less_imp: todo.priority <= 1 }">
+          <span>{{ todo.title }}</span>
 
+          <!--Checkbox-->
           <label class="control">
-            <input type="checkbox" v-model="todo.done" class="control-input visually-hiden"/>
+            <input
+              type="checkbox"
+              v-model="todo.done"
+              class="control-input visually-hiden"
+            />
             <span class="control-indicator"></span>
           </label>
 
-          <span :class=" { done: todo.done }">{{ todo.title }}</span>
+          <input type="number" v-model.number="todo.priority" class="prio">
+          <!--Remove item-->
           <a @click.prevent="remove(todo)">x</a>
         </li>
       </transition-group>
@@ -42,10 +48,15 @@
         />
       </form>
 
-      <!--button marking all list items completed
-      <button @click="allDone" type="button" class="button-complete">
-        All Completed
-      </button>-->
+      <!--button marking all list items completed-->
+      <aside>
+        <button @click="allDone" type="button" class="button-complete">
+          All Completed
+        </button>
+        <button @click="allRemove" type="button" class="button-remove">
+          Remove All
+        </button>
+      </aside>
     </main>
 
     <script src="https://unpkg.com/vue@next"></script>
