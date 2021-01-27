@@ -1,5 +1,3 @@
-
-
 Vue.createApp({
     data() {
         return {
@@ -9,7 +7,6 @@ Vue.createApp({
             
         };
     },
-    
     methods: {
         //add list item
         addTodo() {
@@ -17,7 +14,8 @@ Vue.createApp({
 
             this.todos.push({
                 title: this.newTodo,
-                done: false
+                done: false,
+                priority: 1
             });
             this.newTodo = '';
             this.$refs.new.focus();
@@ -26,10 +24,16 @@ Vue.createApp({
         remove(todo) {
             this.todos = this.todos.filter((item) => item !== todo);
         },
-        //everything on list compelted
+        //everything on list completed
         allDone() {
             this.todos.forEach(todo => {
                 todo.done = true;
+            });
+        },
+        //remove all list items
+        allRemove() {
+            this.todos.forEach( todo => {
+                this.todos = this.todos.filter((item) => item !== todo);
             });
         },
         //clear input
